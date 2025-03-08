@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  comment-on-pr:
     runs-on: ubuntu-latest
     environment: STAGING
     if: github.event_name == 'workflow_dispatch'
