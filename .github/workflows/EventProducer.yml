@@ -9,10 +9,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     environment: STAGING
-    permissions:
-      pull-requests: write  # Allow write access to pull requests
-      contents: read  # Allow read access to repository contents
-      id-token: write  # Allow write access to the ID token
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,6 +32,10 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write  # Allow write access to pull requests
+      contents: read  # Allow read access to repository contents
+      id-token: write  # Allow write access to the ID token
     environment: STAGING
     needs: test
     steps:
@@ -85,7 +85,7 @@ jobs:
         #            })
         uses: actions/github-script@v7
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          #          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             console.log(`The event name is ${context.issue.number}`)
             github.rest.issues.createComment({
