@@ -76,7 +76,7 @@ jobs:
         with:
           script: |
             console.log(`The event name is ${context.issue.number}`)
-            console.log(`Image tag=ghoshdocker/event-producer:${github.sha}`)
+            console.log(`Image tag=ghoshdocker/event-producer:${{github.sha}}`)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
