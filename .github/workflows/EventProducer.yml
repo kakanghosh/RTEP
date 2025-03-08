@@ -81,12 +81,12 @@ jobs:
         #            })
         uses: actions/github-script@v7
         with:
-          #          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             console.log(`The event name is ${context.issue.number}`)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Image tag: ghoshdocker/event-producer:${ github.sha }`
+              body: `Image tag`
             })
