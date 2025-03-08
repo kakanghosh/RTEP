@@ -21,7 +21,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            echo "The event name is ${{ context.issue.number }}"
+            console.log(`The event name is ${context.issue.number}`)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
