@@ -6,6 +6,10 @@ on:
 jobs:
   comment-on-pr:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write  # Allow write access to pull requests
+      contents: read  # Allow read access to repository contents
+      id-token: write  # Allow write access to the ID token
     environment: STAGING
     if: github.event_name == 'workflow_dispatch'
     steps:
